@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:23:57 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 19:11:20 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:41:53 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	put_pixel(t_all *all, int x, int y, int color);
 void	new_wind(t_all *all);
 int		rgb_progressive(int i, int initial_c, int final_c, int n);
 void	draw(t_all *all);
-int		algorithm(t_points points, t_all *all);
+void	algorithm(t_points points, t_all *all);
 void	read_map(int fd, t_all *all);
 
 int		choose_color(float z, float z1, int *color, t_all *all);

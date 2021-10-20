@@ -1,24 +1,38 @@
-NAME = fdf
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/10/20 13:31:43 by jbaringo          #+#    #+#              #
+#    Updated: 2021/10/20 13:32:08 by jbaringo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC = gcc -g
-CFLAGS = -c #-Werror -Wall -Wextra
+NAME = fdf
+CC = gcc
+CFLAGS = -Werror -Wall -Wextra
 LFLAGS = -L srcs/minilibx -lmlx -lXext -lX11 -lm -lbsd
 
 FILES = srcs/main.c srcs/events.c srcs/utils.c srcs/utils2.c srcs/read_map.c srcs/draw.c srcs/algorithm.c srcs/rgb.c\
 		srcs/GNL/get_next_line.c srcs/GNL/get_next_line_utils.c
-OBJ = obj/*.o
+
+OBJ_DIR = obj
+OBJ = $(addprefix $(OBJ_DIR)/,$(FILES:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(FILES)
-	$(CC) $(CFLAGS) $(FILES)
-	mkdir -p obj
-	mv *.o obj
-	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJ)
+	$(CC) -o $@ $(OBJ) $(LFLAGS)
 
 clean :
 	rm -f *.o
-	rm -f obj/*.o
+	rm -rf obj
 
 fclean : clean
 	rm -f $(NAME)

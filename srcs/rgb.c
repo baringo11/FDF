@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:49:06 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/09/14 20:03:49 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:42:30 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ int	get_color(int i, int n, t_all *all)
 	else if (all->color == 7 && i >= (n / 2))
 		return (65536 * rgb_progressive(i, 0, 255, n) + 256 * \
 		rgb_progressive(i, 0, 0, n) + rgb_progressive(i, 255, 0, n));
+	return (0);
 }

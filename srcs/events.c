@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:52 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 18:40:22 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:40:28 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	key_press2(int keycode, t_all *all)
 		all->shift_x = 250;
 		all->shift_y = 150;
 	}
+	return (0);
 }
 
 int	key_press(int keycode, t_all *all)
@@ -63,6 +64,7 @@ int	key_press(int keycode, t_all *all)
 		all->axis_z_rotation += 0.1;
 	key_press2(keycode, all);
 	draw(all);
+	return (0);
 }
 
 int	mouse_move(int x, int y, t_all *all)
@@ -78,6 +80,7 @@ int	mouse_move(int x, int y, t_all *all)
 	all->x_cord = x;
 	all->y_cord = y;
 	draw(all);
+	return (0);
 }
 
 int	mouse_press(int button, int x, int y, t_all *all)
@@ -90,4 +93,5 @@ int	mouse_press(int button, int x, int y, t_all *all)
 		all->zoom *= 0.66666;
 	if (button == 4 || button == 5)
 		draw(all);
+	return (0);
 }

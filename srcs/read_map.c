@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:49:03 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/09/14 19:59:18 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:41:13 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,6 @@ void	fill_matrix_nb(char **map, t_all *all)
 void	fill_matrix(char *map, t_all *all)
 {
 	int	i;
-	int	j;
-	int	k;
-	int	num;
 
 	all->mapa = (int **)malloc(sizeof(int *) * all->filas);
 	if (!all->mapa)

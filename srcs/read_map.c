@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:49:03 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 19:41:13 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:22:00 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,16 @@ void	fill_matrix_nb(char **map, t_all *all)
 			j++;
 			k++;
 		}
+		ft_free_matrix(numbers);
 		i++;
 	}
+	ft_free_matrix(map);
 }
 
 void	fill_matrix(char *map, t_all *all)
 {
-	int	i;
+	int		i;
+	char	**mapa;
 
 	all->mapa = (int **)malloc(sizeof(int *) * all->filas);
 	if (!all->mapa)
@@ -68,7 +71,9 @@ void	fill_matrix(char *map, t_all *all)
 			exit_fdf(strerror(errno), all);
 		i++;
 	}
-	fill_matrix_nb(ft_split(map, '\n'), all);
+	mapa = ft_split(map, '\n');
+	ft_free_ptr(map);
+	fill_matrix_nb(mapa, all);
 }
 
 void	read_map(int fd, t_all *all)
@@ -93,6 +98,7 @@ void	read_map(int fd, t_all *all)
 			free(map);
 			map = tmp;
 		}
+		free(line);
 		all->filas++;
 	}
 	close(fd);

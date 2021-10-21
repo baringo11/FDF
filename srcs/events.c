@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:52 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 19:40:28 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:04:24 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,20 @@ int	key_press(int keycode, t_all *all)
 
 int	mouse_move(int x, int y, t_all *all)
 {
-	if (x < all->x_cord)
-		all->shift_x -= 5;
-	if (x > all->x_cord)
-		all->shift_x += 5;
-	if (y < all->y_cord)
-		all->shift_y -= 5;
-	if (y > all->y_cord)
-		all->shift_y += 5;
-	all->x_cord = x;
-	all->y_cord = y;
-	draw(all);
+	if (all->mouse_flag)
+	{
+		if (x < all->x_cord)
+			all->shift_x -= 8;
+		if (x > all->x_cord)
+			all->shift_x += 8;
+		if (y < all->y_cord)
+			all->shift_y -= 8;
+		if (y > all->y_cord)
+			all->shift_y += 8;
+		all->x_cord = x;
+		all->y_cord = y;
+		draw(all);
+	}
 	return (0);
 }
 
@@ -87,11 +90,26 @@ int	mouse_press(int button, int x, int y, t_all *all)
 {
 	all->x_cord = x;
 	all->y_cord = y;
-	if (button == 4)
-		all->zoom *= 1.5;
-	if (button == 5)
+	if (button == 1)
+		all->mouse_flag = 1;
+	else if (button == 4)
+	{
+		all->zoom++;
+		if (all->zoom < 1000)
+			all->zoom *= 1.5;
+	}
+	else if (button == 5)
 		all->zoom *= 0.66666;
 	if (button == 4 || button == 5)
 		draw(all);
+	return (0);
+}
+
+int		mouse_release(int button, int x, int y, t_all *all)
+{
+	x++;
+	y++;
+	button++;
+	all->mouse_flag = 0;
 	return (0);
 }

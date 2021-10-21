@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:59 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 18:40:28 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/21 14:28:05 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	new_wind(t_all *all)
 		all->mlx.init = mlx_init();
 		all->mlx.win = mlx_new_window(all->mlx.init, WIDTH, HEIGHT, "FDF");
 	}
-	if (all->mlx.image)
-		mlx_destroy_image(all->mlx.init, all->mlx.image);
 	all->mlx.image = mlx_new_image(all->mlx.init, WIDTH, HEIGHT);
+//	if (all->mlx.data)
+//		free(all->mlx.data);
 	all->mlx.data = mlx_get_data_addr(all->mlx.image, &all->mlx.bpp, \
 	&all->mlx.size_line, &all->mlx.endian);
 }
@@ -40,11 +40,15 @@ void	initializate_variables(t_all *all)
 	all->color = 1;
 	all->axis_z_rotation = 0.0;
 	all->projection = 1;
+	all->mouse_flag = 0;
 }
 
 int	main(int argc, char **argv)
 {
 	t_all	all;
+	char *a;
+	a = malloc(1);
+	a[0] = 'a';
 
 	initializate_variables(&all);
 	if (argc != 2)
@@ -53,6 +57,7 @@ int	main(int argc, char **argv)
 	draw(&all);
 	mlx_hook(all.mlx.win, 2, 1L << 0, &key_press, &all);
 	mlx_hook(all.mlx.win, 4, 1L << 2, &mouse_press, &all);
+	mlx_hook(all.mlx.win, 5, 1L << 3, &mouse_release, &all);
 	mlx_hook(all.mlx.win, 6, 1L << 13, &mouse_move, &all);
 	mlx_hook(all.mlx.win, 17, 0, &exit_fdf, NULL);
 	mlx_loop(all.mlx.init);
@@ -69,7 +74,10 @@ int	exit_fdf(char *error, t_all *all)
 			mlx_destroy_image(all->mlx.init, all->mlx.image);
 		if (all->mlx.win)
 			mlx_destroy_window(all->mlx.init, all->mlx.win);
+		//if (all->mlx.init)
+		//	all->mlx.init = ft_free_ptr(all->mlx.init);
 	}
 	write(1, "** EXIT **\n", 11);
+	//system ("leaks fdf");
 	exit(1);
 }

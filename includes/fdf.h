@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:23:57 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 19:41:53 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:17:45 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,24 @@
 # include <math.h>
 
 # include "../srcs/GNL/get_next_line.h"
-# include "../srcs/minilibx/mlx.h"
-# include "../srcs/minilibx/mlx_int.h"
+# include "../srcs/minilibx_macos/mlx.h"
 
 # define WIDTH 800
 # define HEIGHT 700
 
-# define KEY_ESC 65307
-# define KEY_UP_ARROW 65362
-# define KEY_DOWN_ARROW 65364
-# define KEY_LEFT_ARROW 65361
-# define KEY_RIGHT_ARROW 65363
-# define KEY_ZOOM_IN 65451
-# define KEY_ZOOM_OUT 65453
-# define KEY_ROTATE_D 100
-# define KEY_ROTATE_A 97
-# define KEY_ALTITUDE_W 119
-# define KEY_ALTITUDE_S 115
-# define KEY_PROJECTION_SPACE 32
-# define KEY_COLOR_C 99
+# define KEY_ESC 53 //65307
+# define KEY_UP_ARROW 125 //65362
+# define KEY_DOWN_ARROW 126 //65364
+# define KEY_LEFT_ARROW 124 //65361
+# define KEY_RIGHT_ARROW 123 //65363
+# define KEY_ZOOM_IN 69 //65451
+# define KEY_ZOOM_OUT 78 //65453
+# define KEY_ROTATE_D 2 //100
+# define KEY_ROTATE_A 0 //97
+# define KEY_ALTITUDE_W 13 //119
+# define KEY_ALTITUDE_S 1 //115
+# define KEY_PROJECTION_SPACE 49 //32
+# define KEY_COLOR_C 8 //99
 
 typedef struct s_points
 {
@@ -68,14 +67,18 @@ typedef struct s_all
 	int			columnas;
 	int			shift_x;
 	int			shift_y;
-	float		zoom;
+	int			zoom;
 	float		altitude;
 	int			color;
 	int			x_cord;
 	int			y_cord;
 	int			projection;
+	int			mouse_flag;
 	float		axis_z_rotation;
 }				t_all;
+
+void	*ft_free_ptr(void *ptr);
+void	*ft_free_matrix(char **matrix);
 
 float	max_nb(float a, float b);
 float	normalize(float n);

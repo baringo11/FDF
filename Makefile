@@ -6,14 +6,14 @@
 #    By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 13:31:43 by jbaringo          #+#    #+#              #
-#    Updated: 2021/10/20 13:32:08 by jbaringo         ###   ########.fr        #
+#    Updated: 2021/10/21 14:25:46 by jbaringo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra
-LFLAGS = -L srcs/minilibx -lmlx -lXext -lX11 -lm -lbsd
+LFLAGS = -L srcs/minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 FILES = srcs/main.c srcs/events.c srcs/utils.c srcs/utils2.c srcs/read_map.c srcs/draw.c srcs/algorithm.c srcs/rgb.c\
 		srcs/GNL/get_next_line.c srcs/GNL/get_next_line_utils.c

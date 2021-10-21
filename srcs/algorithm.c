@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:35:56 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 19:41:40 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:02:02 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	algorithm2(t_points points, int color, t_all *all)
 		if (all->color > 1)
 			color = get_color(i, n, all);
 		i++;
-		if (points.x >= 0 && points.x <= WIDTH && \
-			points.y >= 0 && points.y <= HEIGHT)
+		if (points.x >= 0 && points.x < WIDTH && \
+			points.y >= 0 && points.y < HEIGHT)
 			put_pixel(all, points.x, points.y, color);
 		points.x += x_step;
 		points.y += y_step;

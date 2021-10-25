@@ -6,11 +6,13 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:59 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/21 14:28:05 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:00:18 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+void	leaks(void);
 
 void	new_wind(t_all *all)
 {
@@ -20,8 +22,6 @@ void	new_wind(t_all *all)
 		all->mlx.win = mlx_new_window(all->mlx.init, WIDTH, HEIGHT, "FDF");
 	}
 	all->mlx.image = mlx_new_image(all->mlx.init, WIDTH, HEIGHT);
-//	if (all->mlx.data)
-//		free(all->mlx.data);
 	all->mlx.data = mlx_get_data_addr(all->mlx.image, &all->mlx.bpp, \
 	&all->mlx.size_line, &all->mlx.endian);
 }
@@ -46,9 +46,6 @@ void	initializate_variables(t_all *all)
 int	main(int argc, char **argv)
 {
 	t_all	all;
-	char *a;
-	a = malloc(1);
-	a[0] = 'a';
 
 	initializate_variables(&all);
 	if (argc != 2)
@@ -64,6 +61,11 @@ int	main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
+void	leaks(void)
+{
+	system ("leaks fdf");
+}
+
 int	exit_fdf(char *error, t_all *all)
 {
 	if (error)
@@ -74,10 +76,10 @@ int	exit_fdf(char *error, t_all *all)
 			mlx_destroy_image(all->mlx.init, all->mlx.image);
 		if (all->mlx.win)
 			mlx_destroy_window(all->mlx.init, all->mlx.win);
-		//if (all->mlx.init)
-		//	all->mlx.init = ft_free_ptr(all->mlx.init);
 	}
 	write(1, "** EXIT **\n", 11);
-	//system ("leaks fdf");
+
+	leaks();
+
 	exit(1);
 }

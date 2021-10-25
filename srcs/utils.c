@@ -6,18 +6,11 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:49:09 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/21 13:51:14 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:23:22 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-void	*ft_free_ptr(void *ptr)
-{
-	free(ptr);
-	ptr = NULL;
-	return (NULL);
-}
 
 void	*ft_free_matrix(char **matrix)
 {
@@ -27,11 +20,17 @@ void	*ft_free_matrix(char **matrix)
 	while (matrix[i])
 	{
 		if (matrix[i] != NULL)
-			matrix[i] = ft_free_ptr(matrix[i]);
+		{
+			free(matrix[i]);
+			matrix[i] = NULL;
+		}
 		i++;
 	}
 	if (matrix != NULL)
-		matrix = ft_free_ptr(matrix);
+	{
+		free(matrix);
+		matrix = NULL;
+	}
 	return (NULL);
 }
 

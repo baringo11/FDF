@@ -6,13 +6,11 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:59 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/25 12:00:18 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:24:13 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-void	leaks(void);
 
 void	new_wind(t_all *all)
 {
@@ -61,11 +59,6 @@ int	main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-void	leaks(void)
-{
-	system ("leaks fdf");
-}
-
 int	exit_fdf(char *error, t_all *all)
 {
 	if (error)
@@ -78,8 +71,5 @@ int	exit_fdf(char *error, t_all *all)
 			mlx_destroy_window(all->mlx.init, all->mlx.win);
 	}
 	write(1, "** EXIT **\n", 11);
-
-	leaks();
-
 	exit(1);
 }

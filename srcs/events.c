@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:52 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/21 13:04:24 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:14:53 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	mouse_press(int button, int x, int y, t_all *all)
 	return (0);
 }
 
-int		mouse_release(int button, int x, int y, t_all *all)
+int	mouse_release(int button, int x, int y, t_all *all)
 {
 	x++;
 	y++;

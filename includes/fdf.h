@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:23:57 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/21 13:17:45 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:27:29 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@
 # define WIDTH 800
 # define HEIGHT 700
 
-# define KEY_ESC 53 //65307
-# define KEY_UP_ARROW 125 //65362
-# define KEY_DOWN_ARROW 126 //65364
-# define KEY_LEFT_ARROW 124 //65361
-# define KEY_RIGHT_ARROW 123 //65363
-# define KEY_ZOOM_IN 69 //65451
-# define KEY_ZOOM_OUT 78 //65453
-# define KEY_ROTATE_D 2 //100
-# define KEY_ROTATE_A 0 //97
-# define KEY_ALTITUDE_W 13 //119
-# define KEY_ALTITUDE_S 1 //115
-# define KEY_PROJECTION_SPACE 49 //32
-# define KEY_COLOR_C 8 //99
+# define KEY_ESC 53
+# define KEY_UP_ARROW 125
+# define KEY_DOWN_ARROW 126
+# define KEY_LEFT_ARROW 124
+# define KEY_RIGHT_ARROW 123
+# define KEY_ZOOM_IN 69
+# define KEY_ZOOM_OUT 78
+# define KEY_ROTATE_D 2
+# define KEY_ROTATE_A 0
+# define KEY_ALTITUDE_W 13
+# define KEY_ALTITUDE_S 1
+# define KEY_PROJECTION_SPACE 49
+# define KEY_COLOR_C 8
 
 typedef struct s_points
 {
@@ -77,7 +77,6 @@ typedef struct s_all
 	float		axis_z_rotation;
 }				t_all;
 
-void	*ft_free_ptr(void *ptr);
 void	*ft_free_matrix(char **matrix);
 
 float	max_nb(float a, float b);

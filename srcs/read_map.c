@@ -6,11 +6,28 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:49:03 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/25 11:59:27 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:21:48 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+void	check_line(char *line, t_all *all)
+{
+	int	i;
+	int	flag;
+
+	flag = 0;
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] >= '0' && line[i] <= '9')
+			flag = 1;
+		i++;
+	}
+	if (flag)
+		all->filas++;
+}
 
 void	check_columns(char *line, t_all *all)
 {
@@ -73,7 +90,8 @@ void	fill_matrix(char *map, t_all *all, int fd)
 		i++;
 	}
 	mapa = ft_split(map, '\n');
-	ft_free_ptr(map);
+	free(map);
+	map = NULL;
 	fill_matrix_nb(mapa, all);
 }
 
@@ -99,8 +117,8 @@ void	read_map(int fd, t_all *all)
 			free(map);
 			map = tmp;
 		}
+		check_line(line, all);
 		free(line);
-		all->filas++;
 	}
 	free(line);
 	fill_matrix(map, all, fd);

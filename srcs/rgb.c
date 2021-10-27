@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:49:06 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 19:42:30 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:38:12 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@ int	rgb_progressive(int i, int initial_c, int final_c, int n)
 	return (0);
 }
 
-int	choose_color(float z, float z1, int *color, t_all *all)
+int	choose_color(float z, float z1, unsigned int *color, t_all *all)
 {
-	*color = 0xFFFFFF;
-	if (all->color && z > 0 && z1 > 0)
-		*color = 0xFF0000;
-	else if (all->color && z < 0 && z1 <= 0)
-		*color = 0x00FF00;
-	if (all->color)
+	if (all->color == 0 && *color == 0)
+		*color = 0x7CFF00;
+	if (all->color != 0)
+		*color = 0xFFFFFF;
+	if (all->color > 0)
 	{
+		if (z > 0 && z1 > 0)
+			*color = 0xFF0000;
+		else if (z < 0 && z1 <= 0)
+			*color = 0x00FF00;
 		if (z > z1 && z1 == 0)
 			return (2);
 		if (z1 > z && z == 0)
@@ -45,7 +48,7 @@ int	choose_color(float z, float z1, int *color, t_all *all)
 	return (all->color);
 }
 
-int	get_color(int i, int n, t_all *all)
+unsigned int	get_color(int i, int n, t_all *all)
 {
 	if (all->color == 2)
 		return (65536 * rgb_progressive(i, 255, 0, n) + 256 * \

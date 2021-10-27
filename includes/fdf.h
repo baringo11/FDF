@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:23:57 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/25 12:27:29 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:17:48 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,21 @@ typedef struct s_mlx
 
 typedef struct s_all
 {
-	t_mlx		mlx;
-	int			**mapa;
-	int			filas;
-	int			columnas;
-	int			shift_x;
-	int			shift_y;
-	int			zoom;
-	float		altitude;
-	int			color;
-	int			x_cord;
-	int			y_cord;
-	int			projection;
-	int			mouse_flag;
-	float		axis_z_rotation;
+	t_mlx			mlx;
+	int				**mapa;
+	int				filas;
+	int				columnas;
+	int				shift_x;
+	int				shift_y;
+	int				zoom;
+	float			altitude;
+	int				color;
+	unsigned int	**hex_color;
+	int				x_cord;
+	int				y_cord;
+	int				projection;
+	int				mouse_flag;
+	float			axis_z_rotation;
 }				t_all;
 
 void	*ft_free_matrix(char **matrix);
@@ -89,11 +90,12 @@ void	put_pixel(t_all *all, int x, int y, int color);
 void	new_wind(t_all *all);
 int		rgb_progressive(int i, int initial_c, int final_c, int n);
 void	draw(t_all *all);
-void	algorithm(t_points points, t_all *all);
+void	algorithm(t_points points, unsigned int color, t_all *all);
 void	read_map(int fd, t_all *all);
 
-int		choose_color(float z, float z1, int *color, t_all *all);
-int		get_color(int i, int n, t_all *all);
+int				choose_color(float z, float z1, unsigned int *color, t_all *all);
+unsigned int	get_color(int i, int n, t_all *all);
+unsigned int	hexadecimal(char *map, t_all *all);
 
 int		exit_fdf(char *error, t_all *all);
 int		key_press(int keycode, t_all *all);

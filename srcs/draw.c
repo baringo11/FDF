@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:45 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/19 19:08:22 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:38:51 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ void	pre_algorithm(float x, float y, int flag, t_all *all)
 		points.x1 = x;
 		points.y1 = y + 1;
 	}
-	algorithm(points, all);
+	if (all->hex_color[(int)y][(int)x] != 0)
+		algorithm(points, all->hex_color[(int)y][(int)x], all);
+	else
+		algorithm(points, 0, all);
 }
 
 void	draw(t_all *all)

@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:35:56 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/21 13:02:02 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:18:45 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	number_of_colors(float x, float x1, float y, float y1)
 	return (i);
 }
 
-void	algorithm2(t_points points, int color, t_all *all)
+void	algorithm2(t_points points, unsigned int color, t_all *all)
 {
 	float	x_step;
 	float	y_step;
@@ -85,11 +85,10 @@ void	algorithm2(t_points points, int color, t_all *all)
 	}
 }
 
-void	algorithm(t_points points, t_all *all)
+void	algorithm(t_points points, unsigned int color, t_all *all)
 {
 	float	z;
 	float	z1;
-	int		color;
 
 	z = all->mapa[(int)points.y][(int)points.x];
 	z1 = all->mapa[(int)points.y1][(int)points.x1];

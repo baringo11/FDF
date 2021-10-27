@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:59 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/25 12:24:13 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:07:41 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	initializate_variables(t_all *all)
 	all->shift_y = 150;
 	all->zoom = 15.0;
 	all->altitude = 0.1;
-	all->color = 1;
+	all->color = 0;
 	all->axis_z_rotation = 0.0;
 	all->projection = 1;
 	all->mouse_flag = 0;
@@ -61,6 +61,8 @@ int	main(int argc, char **argv)
 
 int	exit_fdf(char *error, t_all *all)
 {
+	int	i;
+
 	if (error)
 		write(1, error, ft_strlen(error));
 	if (error)
@@ -69,6 +71,17 @@ int	exit_fdf(char *error, t_all *all)
 			mlx_destroy_image(all->mlx.init, all->mlx.image);
 		if (all->mlx.win)
 			mlx_destroy_window(all->mlx.init, all->mlx.win);
+		if (all->mapa || all->hex_color)
+		{
+			i = 0;
+			while (i < all->filas)
+			{
+				free(all->mapa[i]);
+				free(all->hex_color[i++]);
+			}
+			free(all->mapa);
+			free(all->hex_color);
+		}
 	}
 	write(1, "** EXIT **\n", 11);
 	exit(1);

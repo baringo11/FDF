@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:52 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/25 12:14:53 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:39:25 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int	key_press2(int keycode, t_all *all)
 {
 	if (keycode == KEY_COLOR_C)
 	{
-		if (all->color)
-			all->color = 0;
-		else
+		if (all->color > 0)
+			all->color = -1;
+		else if (all->color == 0)
 			all->color = 1;
+		else
+			all->color = 0;
 	}
 	if (keycode == KEY_PROJECTION_SPACE)
 	{
@@ -51,9 +53,9 @@ int	key_press(int keycode, t_all *all)
 	if (keycode == KEY_ESC)
 		exit_fdf("", all);
 	if (keycode == KEY_ZOOM_IN)
-		all->zoom *= 1.5;
+		all->zoom += 1;
 	if (keycode == KEY_ZOOM_OUT)
-		all->zoom *= 0.3;
+		all->zoom -= 1;
 	if (keycode == KEY_ALTITUDE_W)
 		all->altitude += 0.1;
 	if (keycode == KEY_ALTITUDE_S)
@@ -96,7 +98,7 @@ int	mouse_press(int button, int x, int y, t_all *all)
 	{
 		all->zoom++;
 		if (all->zoom < 1000)
-			all->zoom *= 1.5;
+			all->zoom *= 1.2;
 	}
 	else if (button == 5)
 		all->zoom *= 0.66666;

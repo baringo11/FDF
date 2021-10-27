@@ -6,13 +6,13 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 12:29:39 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/27 12:41:48 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:23:27 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		hex_to_dec(char c)
+int	hex_to_dec(char c)
 {
 	if (c >= 'A' && c <= 'F')
 		return (c - 55);
@@ -24,7 +24,7 @@ int		hex_to_dec(char c)
 unsigned int	get_hex(char *hex)
 {
 	int	rgb[3];
-	int i;
+	int	i;
 
 	i = 0;
 	while (hex[i] && hex[i] != ' ')
@@ -58,7 +58,7 @@ unsigned int	hexadecimal(char *map, t_all *all)
 	{
 		i++;
 		if (map[i] == '0' && map[i + 1] == 'x')
-			return(get_hex(&map[i + 2]));
+			return (get_hex(&map[i + 2]));
 		else
 			exit_fdf("Error, wrong map format", all);
 	}

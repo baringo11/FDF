@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:49:03 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/27 19:01:35 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:24:52 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,16 @@ void	fill_matrix(char *map, t_all *all, int fd)
 
 	close(fd);
 	all->mapa = (int **)malloc(sizeof(int *) * all->filas);
-	all->hex_color = (unsigned int **)malloc(sizeof(unsigned int *) * all->filas);
+	all->hex_color = (unsigned int **)malloc(\
+					sizeof(unsigned int *) * all->filas);
 	if (!all->mapa || !all->hex_color)
 		exit_fdf(strerror(errno), all);
 	i = 0;
 	while (i < all->filas)
 	{
 		all->mapa[i] = (int *)malloc(sizeof(int) * all->columnas);
-		all->hex_color[i] = (unsigned int *)malloc(sizeof(unsigned int) * all->columnas);
+		all->hex_color[i] = (unsigned int *)malloc(\
+							sizeof(unsigned int) * all->columnas);
 		if (!all->mapa[i] || !all->hex_color[i])
 			exit_fdf(strerror(errno), all);
 		i++;

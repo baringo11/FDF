@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:23:57 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/27 19:17:48 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:26:30 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,30 +78,31 @@ typedef struct s_all
 	float			axis_z_rotation;
 }				t_all;
 
-void	*ft_free_matrix(char **matrix);
+void			*ft_free_matrix(char **matrix);
 
-float	max_nb(float a, float b);
-float	normalize(float n);
-char	**ft_split(char *s, char c);
-char	*special_strjoin(char *s1, char *s2);
-int		ft_atoi(char *str);
+float			max_nb(float a, float b);
+float			normalize(float n);
+char			**ft_split(char *s, char c);
+char			*special_strjoin(char *s1, char *s2);
+int				ft_atoi(char *str);
 
-void	put_pixel(t_all *all, int x, int y, int color);
-void	new_wind(t_all *all);
-int		rgb_progressive(int i, int initial_c, int final_c, int n);
-void	draw(t_all *all);
-void	algorithm(t_points points, unsigned int color, t_all *all);
-void	read_map(int fd, t_all *all);
+void			put_pixel(t_all *all, int x, int y, int color);
+void			new_wind(t_all *all);
+int				rgb_progressive(int i, int initial_c, int final_c, int n);
+void			draw(t_all *all);
+void			algorithm(t_points points, unsigned int color, t_all *all);
+void			read_map(int fd, t_all *all);
 
-int				choose_color(float z, float z1, unsigned int *color, t_all *all);
 unsigned int	get_color(int i, int n, t_all *all);
 unsigned int	hexadecimal(char *map, t_all *all);
+int				choose_color(float z, float z1, unsigned int *color, \
+							 t_all *all);
 
-int		exit_fdf(char *error, t_all *all);
-int		key_press(int keycode, t_all *all);
-int		key_release(int keycode, t_all *all);
-int		mouse_press(int button, int x, int y, t_all *param);
-int		mouse_move(int x, int y, t_all *all);
-int		mouse_release(int button, int x, int y, t_all *all);
+int				exit_fdf(char *error, t_all *all);
+int				key_press(int keycode, t_all *all);
+int				key_release(int keycode, t_all *all);
+int				mouse_press(int button, int x, int y, t_all *param);
+int				mouse_move(int x, int y, t_all *all);
+int				mouse_release(int button, int x, int y, t_all *all);
 
 #endif

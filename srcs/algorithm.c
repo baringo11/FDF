@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:35:56 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/27 18:18:45 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/11/02 11:55:49 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	projections(float *x, float *y, float z, t_all *all)
 	if (all->projection == 1)
 	{
 		*x = (*x - *y) * cos(1);
-		*y = (*x + *y) * sin(1) - z;
+		*y = (*x + *y) * sin(0.35) - z;
 	}
 	else if (all->projection == 2)
 	{

@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:48:59 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/10/27 19:07:41 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/11/02 11:37:40 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	initializate_variables(t_all *all)
 	all->axis_z_rotation = 0.0;
 	all->projection = 1;
 	all->mouse_flag = 0;
+	all->mapa = 0;
+	all->hex_color = 0;
 }
 
 int	main(int argc, char **argv)
